@@ -1,6 +1,8 @@
 {
     "name": "sapioweb/crudhelper",
     "description": "Helper provider to assist in general crud functions of a restful controller",
+    "keywords": ["beasley", "sapioweb", "laravel", "service providers", "api", "crud", "helper", "index", "show", "edit", "create", "update", "delete", "google", "service provider"],
+    "license" : "MIT",
     "authors": [
         {
             "name": "Andreas Beasley",
@@ -8,10 +10,7 @@
         }
     ],
     "autoload": {
-        "classmap": [
-        ],
         "psr-4": {
-            "App\\": "app/",
             "Sapioweb\\CrudHelper\\": "src"
         }
     },
