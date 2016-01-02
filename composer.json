@@ -12,7 +12,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Sapioweb\\CrudHelper\\": "package/sapioweb/crudhelper/src"
+            "Sapioweb\\CrudHelper\\": "src"
         }
     },
     "minimum-stability": "dev",
