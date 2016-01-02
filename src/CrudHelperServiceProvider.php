@@ -23,6 +23,6 @@ class CrudHelperServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->make('Sapioweb\CrudHelper\CrudyController');
     }
 }
