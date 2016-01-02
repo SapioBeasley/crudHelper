@@ -14,9 +14,10 @@ class CrudyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public static function index($model)
     {
-        return 'Live from crud station';
+        $resource = $model->all();
+        return $resource;
     }
 
     /**
@@ -24,7 +25,7 @@ class CrudyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public static function create()
     {
         //
     }
@@ -46,7 +47,7 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public static function show($id)
     {
         //
     }
@@ -57,7 +58,7 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public static function edit($id)
     {
         //
     }
@@ -69,7 +70,7 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public static function update(Request $request, $id)
     {
         //
     }
@@ -80,7 +81,7 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public static function destroy($id)
     {
         //
     }
