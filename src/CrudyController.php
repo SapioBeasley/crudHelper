@@ -25,7 +25,7 @@ class CrudyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public static function create()
+    public function create()
     {
         //
     }
@@ -36,7 +36,7 @@ class CrudyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public static function store(Request $request)
     {
         //
     }
@@ -47,9 +47,10 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public static function show($id)
+    public static function show($model, $field = 'id', $id)
     {
-        //
+        $resource = $model->where($field, '=', $id)->first();
+        return $resource;
     }
 
     /**
@@ -58,7 +59,7 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public static function edit($id)
+    public function edit($id)
     {
         //
     }
@@ -81,8 +82,36 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public static function destroy($id)
+    public static function destroy($model, $field = 'id', $id)
     {
-        //
+        $resource = $model->find($id);
+        $resource->delete();
+
+        return $resource;
+    }
+
+    public static function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
     }
 }
