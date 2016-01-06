@@ -25,7 +25,7 @@ class CrudyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public static function create()
     {
         //
     }
@@ -36,9 +36,10 @@ class CrudyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public static function store(Request $request)
+    public static function store($model, $data)
     {
-        //
+        $resource = $model->store($data);
+        return $resource;
     }
 
     /**
@@ -59,7 +60,7 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public static function edit($id)
     {
         //
     }
