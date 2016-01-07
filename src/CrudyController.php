@@ -38,7 +38,7 @@ class CrudyController extends Controller
      */
     public static function store($model, $data)
     {
-        $resource = $model->store($data);
+        $resource = $model->create($data);
         return $resource;
     }
 
