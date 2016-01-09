@@ -14,9 +14,21 @@ class CrudyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public static function index($model)
+    public static function index($model, $relations = null)
     {
-        $resource = $model->all();
+        switch (true) {
+            case $relations !== null:
+
+                foreach ($relations as $relation) {
+                    $resource = $model->with($relation);
+                }
+                break;
+
+            default:
+                $resource = $model->all();
+                break;
+        }
+
         return $resource;
     }
 
@@ -25,7 +37,7 @@ class CrudyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public static function create()
+    public function create()
     {
         //
     }
@@ -36,10 +48,9 @@ class CrudyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public static function store($model, $data)
+    public static function store(Request $request)
     {
-        $resource = $model->create($data);
-        return $resource;
+        //
     }
 
     /**
@@ -48,9 +59,25 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public static function show($model, $field = 'id', $id)
+    public static function show($model, $field = 'id', $id, $relations = null)
     {
-        $resource = $model->where($field, '=', $id)->first();
+        switch (true) {
+            case $relations !== null:
+
+                $resource = $model->where($field, '=', $id);
+
+                foreach ($relations as $relation) {
+                    $resource = $model->with($relation);
+                }
+                break;
+
+            default:
+                $resource = $model->where($field, '=', $id);
+                break;
+        }
+
+        // $resource = $resource->first();
+
         return $resource;
     }
 
@@ -60,7 +87,7 @@ class CrudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public static function edit($id)
+    public function edit($id)
     {
         //
     }
