@@ -33,24 +33,16 @@ class CrudyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public static function store(Request $request)
+    public static function store($model, $createData)
     {
-        //
+        $resource = $model->create($createData);
+
+        return $resource;
     }
 
     /**
@@ -80,14 +72,22 @@ class CrudyController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Query resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public static function relationshipQuery($model, $relationships, $relationField = null, $relationshipQuery = null)
     {
-        //
+        foreach ($relationships as $relationship) {
+            $resource = $model->with($relationship);
+        }
+
+        $resource = $resource->whereHas($relationship, function($query) use ($relationField, $relationshipQuery) {
+            $query->where($relationField, '=', $relationshipQuery);
+        });
+
+        return $resource;
     }
 
     /**
