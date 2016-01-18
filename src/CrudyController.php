@@ -9,11 +9,6 @@ use App\Http\Controllers\Controller;
 
 class CrudyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public static function index($model, $relations = null)
     {
         switch (true) {
@@ -32,12 +27,6 @@ class CrudyController extends Controller
         return $resource;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public static function store($model, $createData)
     {
         $resource = $model->create($createData);
@@ -45,12 +34,6 @@ class CrudyController extends Controller
         return $resource;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public static function show($model, $field = 'id', $id, $relations = null)
     {
         switch (true) {
@@ -71,12 +54,6 @@ class CrudyController extends Controller
         return $resource;
     }
 
-    /**
-     * Query resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public static function relationshipQuery($model, $relationships, $relationField = null, $relationshipQuery = null)
     {
         foreach ($relationships as $relationship) {
@@ -90,24 +67,29 @@ class CrudyController extends Controller
         return $resource;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public static function update(Request $request, $id)
+    public static function createOrUpdate($model, $field, $id, $inputData)
     {
-        //
+        $resource = static::show($model, $field, $id);
+
+        foreach ($inputData as $inputKey => $inputValue) {
+            $data[$inputKey] = $inputValue;
+        }
+
+        switch (true) {
+            case $resource->exists():
+
+                $resource->update($data);
+                break;
+
+            default:
+
+                $model->create($data);
+                break;
+        }
+
+        return $resource;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public static function destroy($model, $field = 'id', $id)
     {
         $resource = $model->find($id);
