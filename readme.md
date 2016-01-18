@@ -1,35 +1,39 @@
-## Crud Helper for Laravel 5
-
+## Crud Helper for Laravel 5+
 [![Latest Stable Version](https://poser.pugx.org/sapioweb/crudhelper/v/stable)](https://packagist.org/packages/sapioweb/crudhelper)
 [![Total Downloads](https://poser.pugx.org/sapioweb/crudhelper/downloads)](https://packagist.org/packages/sapioweb/crudhelper)
 [![Latest Unstable Version](https://poser.pugx.org/sapioweb/crudhelper/v/unstable)](https://packagist.org/packages/sapioweb/crudhelper)
 [![License](https://poser.pugx.org/sapioweb/crudhelper/license)](https://packagist.org/packages/sapioweb/crudhelper)
 
 ## Installation
-Include
-        Sapioweb\CrudHelper\CrudHelperServiceProvider::class,
+Include into your `config/app.php`
+`Sapioweb\CrudHelper\CrudHelperServiceProvider::class,`
 
-Use
-        use Sapioweb\CrudHelper\CrudyController as CrudHelper;
+Use the helper in any controller you plan to use it in
+`use Sapioweb\CrudHelper\CrudyController as CrudHelper;`
 
 ## Usage
-
 `use Sapioweb\CrudHelper\CrudyController as CrudHelper;`
 
 `dd(CrudHelper::index());`
 
 ## Available Methods
-
+Grab all data for a given resource
 `index($model, $relations = null)`
 
+Stores you data for a resource
 `store($model, $createData)`
 
+Show a single resource
 `show($model, $field = 'id', $id, $relations = null)`
 
+Preform a where query on relationships
 `relationshipQuery($model, $relationships, $relationField = null, $relationshipQuery = null)`
 
+Create or update a resource
 `createOrUpdate($model, $field, $id, $inputData)`
 
+Destroy a resource
 `destroy($model, $field = 'id', $id)`
 
+Turn a regular string into a slug string
 `slugify($text)`
