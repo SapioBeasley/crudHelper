@@ -5,11 +5,31 @@
 [![Latest Unstable Version](https://poser.pugx.org/sapioweb/crudhelper/v/unstable)](https://packagist.org/packages/sapioweb/crudhelper)
 [![License](https://poser.pugx.org/sapioweb/crudhelper/license)](https://packagist.org/packages/sapioweb/crudhelper)
 
+## Installation
 Include
         Sapioweb\CrudHelper\CrudHelperServiceProvider::class,
 
 Use
         use Sapioweb\CrudHelper\CrudyController as CrudHelper;
 
- Return
-       dd(CrudHelper::index());
+## Usage
+
+`use Sapioweb\CrudHelper\CrudyController as CrudHelper;`
+
+`dd(CrudHelper::index());`
+
+## Available Methods
+
+`index($model, $relations = null)`
+
+`store($model, $createData)`
+
+`show($model, $field = 'id', $id, $relations = null)`
+
+`relationshipQuery($model, $relationships, $relationField = null, $relationshipQuery = null)`
+
+`createOrUpdate($model, $field, $id, $inputData)`
+
+`destroy($model, $field = 'id', $id)`
+
+`slugify($text)`
