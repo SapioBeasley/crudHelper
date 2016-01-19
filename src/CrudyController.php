@@ -51,7 +51,7 @@ class CrudyController extends Controller
                 break;
         }
 
-        return $resource;
+        return $resource->first();
     }
 
     public static function relationshipQuery($model, $relationships, $relationField = null, $relationshipQuery = null)
