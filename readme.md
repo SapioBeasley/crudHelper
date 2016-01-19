@@ -5,11 +5,9 @@
 [![License](https://poser.pugx.org/sapioweb/crudhelper/license)](https://packagist.org/packages/sapioweb/crudhelper)
 
 ## Installation
-Include into your `config/app.php`
-`Sapioweb\CrudHelper\CrudHelperServiceProvider::class,`
+Include into your `config/app.php`, `Sapioweb\CrudHelper\CrudHelperServiceProvider::class,`
 
-Use the helper in any controller you plan to use it in
-`use Sapioweb\CrudHelper\CrudyController as CrudHelper;`
+Use the helper in any controller you plan to use it in, `use Sapioweb\CrudHelper\CrudyController as CrudHelper;`
 
 ## Usage
 `use Sapioweb\CrudHelper\CrudyController as CrudHelper;`
@@ -18,22 +16,29 @@ Use the helper in any controller you plan to use it in
 
 ## Available Methods
 Grab all data for a given resource
-`index($model, $relations = null)`
+
+`CrudHelper::index($model, $relations = null)`
 
 Stores you data for a resource
-`store($model, $createData)`
+
+`CrudHelper::store($model, $createData)`
 
 Show a single resource
-`show($model, $field = 'id', $id, $relations = null)`
+
+`CrudHelper::show($model, $field = 'id', $id, $relations = null)`
 
 Preform a where query on relationships
-`relationshipQuery($model, $relationships, $relationField = null, $relationshipQuery = null)`
+
+`CrudHelper::relationshipQuery($model, $relationships, $relationField = null, $relationshipQuery = null)`
 
 Create or update a resource
-`createOrUpdate($model, $field, $id, $inputData)`
+
+`CrudHelper::createOrUpdate($model, $field, $id, $inputData)`
 
 Destroy a resource
-`destroy($model, $field = 'id', $id)`
+
+`CrudHelper::destroy($model, $field = 'id', $id)`
 
 Turn a regular string into a slug string
-`slugify($text)`
+
+`CrudHelper::slugify($text)`
