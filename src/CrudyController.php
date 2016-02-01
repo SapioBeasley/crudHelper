@@ -9,14 +9,12 @@ use App\Http\Controllers\Controller;
 
 class CrudyController extends Controller
 {
-    public static function index($model, $relations = null)
+    public static function index($model, $relations = [])
     {
         switch (true) {
             case $relations !== null:
 
-                foreach ($relations as $relation) {
-                    $resource = $model->with($relation);
-                }
+                $resource = $model->with($relations);
                 break;
 
             default:
