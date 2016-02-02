@@ -88,7 +88,7 @@ class CrudyController extends Controller
         return $resource;
     }
 
-    public static function destroy($model, $field = 'id', $id)
+    public static function destroy($model, $id)
     {
         $resource = $model->find($id);
         $resource->delete();
