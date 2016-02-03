@@ -32,14 +32,12 @@ class CrudyController extends Controller
         return $resource;
     }
 
-    public static function show($model, $field = 'id', $id, $relations = null)
+    public static function show($model, $field = 'id', $id, $relations = [])
     {
         switch (true) {
             case $relations !== null:
 
-                foreach ($relations as $relation) {
-                    $resource = $model->with($relation);
-                }
+                $resource = $model->with($relation);
 
                 $resource = $resource->where($field, '=', $id);
                 break;
