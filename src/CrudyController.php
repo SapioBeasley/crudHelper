@@ -37,7 +37,7 @@ class CrudyController extends Controller
         switch (true) {
             case $relations !== null:
 
-                $resource = $model->with($relation);
+                $resource = $model->with($relations);
 
                 $resource = $resource->where($field, '=', $id);
                 break;
