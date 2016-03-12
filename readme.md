@@ -45,4 +45,4 @@ Turn a regular string into a slug string
 
 ### License
 
-This software is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). For questions please email andreas@sapioweb.com or info@sapioweb.com or visit [Sapioweb.com](sapioweb.com) to learn more and get in contact
+This software is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). For questions please email andreas@sapioweb.com or info@sapioweb.com or visit [Sapioweb.com](https://sapioweb.com/) to learn more and get in contact
