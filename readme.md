@@ -42,3 +42,7 @@ Destroy a resource
 Turn a regular string into a slug string
 
 `CrudHelper::slugify($text)`
+
+### License
+
+This software is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). For questions please email andreas@sapioweb.com or info@sapioweb.com or visit [Sapioweb.com](sapioweb.com) to learn more and get in contact
